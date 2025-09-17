@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "author": "Navneet",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -108.6, "left": -496.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -38.4, "left": 110.44, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -99.4,
+      "left": 355.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -122.4,
+      "left": 213,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": -35.2, "left": 308, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 186.35,
+      "left": 384,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-microphone", "id": "mic1", "top": -64.98, "left": -158.61, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 32.75,
+      "left": 230.4,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": -22.8, "left": 263, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn1:1.l", "esp:15", "red", [ "h-288", "v268.8", "h211.2", "v-105.6" ] ],
+    [ "bz1:1", "esp:GND.2", "gold", [ "v0" ] ],
+    [ "bz1:2", "esp:4", "green", [ "v0" ] ],
+    [ "ldr1:AO", "esp:VP", "green", [ "h48", "v-154.3", "h-432", "v124.8" ] ],
+    [ "ldr1:AO", "r1:2", "green", [ "h9.6", "v114.5" ] ],
+    [ "r1:1", "esp:GND.3", "green", [ "v-19.2", "h0", "v-19.2", "h-115.2", "v-67.2" ] ],
+    [ "bb1:bp.25", "esp:3V3", "green", [ "v-0.9", "h97.6", "v-105.6" ] ],
+    [ "bb1:bn.25", "esp:GND.1", "green", [ "v0" ] ],
+    [ "ldr1:GND", "bb1:tn.23", "black", [ "h0", "v-182.8", "h-566.4" ] ],
+    [ "ldr1:VCC", "bb1:tp.25", "red", [ "h28.8", "v-153.6", "h-9.6" ] ],
+    [ "bb1:tn.1", "bb1:bn.1", "green", [ "v-0.1", "h-56", "v172.8" ] ],
+    [ "bb1:tp.1", "bb1:bp.1", "green", [ "v0.3", "h-84.8", "v172.8" ] ],
+    [ "btn1:2.l", "esp:GND.1", "green", [ "h0", "v29" ] ],
+    [ "mic1:1", "esp:VP", "gold", [ "v115.2" ] ],
+    [ "mic1:2", "esp:GND.1", "magenta", [ "v96", "h-0.01" ] ],
+    [ "r2:1", "esp:GND.3", "black", [ "v0" ] ],
+    [ "led1:C", "r2:2", "green", [ "v0" ] ],
+    [ "led1:A", "esp:17", "green", [ "v67.2" ] ]
+  ],
+  "dependencies": {}
+}
